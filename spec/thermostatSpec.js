@@ -55,7 +55,6 @@ describe("Thermostat", () => {
     for (let i = 0; i < 6; i++) {
       thermostat.up();
     }
-    console.log(thermostat.currentTemperature())
     expect(thermostat.currentEnergyUsage()).toEqual("high-usage");
   });
   it("can detect medium energy usage when temperature is between than 18 and 25 degrees", () => {
