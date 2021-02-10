@@ -12,11 +12,11 @@ class Thermostat {
   }
 
   up() {
-    if (this.temperature < this.maximumTemperature()) this.temperature++;
+    if (this.currentTemperature() < this.maximumTemperature()) this.temperature++;
   }
 
   down() {
-    if (this.temperature > 10) this.temperature--;
+    if (this.currentTemperature() > 10) this.temperature--;
   }
 
   reset() {
@@ -24,7 +24,7 @@ class Thermostat {
   }
 
   currentEnergyUsage() {
-    return this.temperature > 25 ? "high-usage" : this.temperature < 18 ? "low-usage" : "medium-usage"
+    return this.currentTemperature() > 25 ? "high-usage" : this.currentTemperature() < 18 ? "low-usage" : "medium-usage"
   }
 
   maximumTemperature() {
