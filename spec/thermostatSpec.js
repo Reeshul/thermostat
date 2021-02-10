@@ -21,9 +21,20 @@ describe("Thermostat", () => {
     expect(thermostat.currentTemperature()).toEqual(10);
   });
   it("temperature is not more than 25 degrees when power saving mode on", () => {
+    thermostat.turnOnPowerSaving();
     for (let i = 0; i < 6; i++) {
       thermostat.up();
     }
     expect(thermostat.currentTemperature()).toEqual(25);
-  })
+  });
+  it("temperature is not more than 32 degrees when power saving mode off", () => {
+    thermostat.turnOffPowerSaving();
+    console.log(thermostat.currentTemperature());
+    console.log(thermostat.maximumTemperature());
+    for (let i = 0; i < 13; i++) {
+      thermostat.up();
+    }
+    console.log(thermostat.currentTemperature());
+    expect(thermostat.currentTemperature()).toEqual(32);
+  });
 });
