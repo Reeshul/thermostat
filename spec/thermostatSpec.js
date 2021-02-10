@@ -10,7 +10,7 @@ describe("Thermostat", () => {
     thermostat.up();
     expect(thermostat.currentTemperature()).toEqual(21);
   });
-  it("temperature dexrceases when the down function is called", () => {
+  it("temperature decrceases when the down function is called", () => {
     thermostat.down();
     expect(thermostat.currentTemperature()).toEqual(19);
   });
@@ -29,12 +29,9 @@ describe("Thermostat", () => {
   });
   it("temperature is not more than 32 degrees when power saving mode off", () => {
     thermostat.turnOffPowerSaving();
-    console.log(thermostat.currentTemperature());
-    console.log(thermostat.maximumTemperature());
     for (let i = 0; i < 13; i++) {
       thermostat.up();
     }
-    console.log(thermostat.currentTemperature());
     expect(thermostat.currentTemperature()).toEqual(32);
   });
 });

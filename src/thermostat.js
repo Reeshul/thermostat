@@ -1,37 +1,32 @@
 class Thermostat {
   constructor() {
     this.temperature = 20;
-    this.MAX_TEMP = 32
-    this.MAX_POWER_SAVING_TEMP = 25
-    this.powerSavingMode = true
+    this.powerSavingMode = true;
+    this.MAXIMUM_TEMPERATURE = 32;
+    this.MAXIMUM_TEMPERATURE_WHEN_POWER_SAVING_MODE_IS_ON = 25;
   }
 
   currentTemperature() {
     return this.temperature;
   }
 
-  maximumTemperature() {
-    return this.isPowerSavingModeOn() ? this.MAX_POWER_SAVING_TEMP : this.MAX_TEMP
-  }
-
-  isPowerSavingModeOn() {
-    return this.powerSavingMode === true
-  }
-
   up() {
-    if ( this.temperature < this.maximumTemperature() ) {
-      this.temperature++;
-    }
+    if (this.temperature < this.maximumTemperature()) this.temperature++;
   }
 
   down() {
-    if (this.temperature > 10) {
-      this.temperature--;
-    }
+    if (this.temperature > 10) this.temperature--;
   }
 
-  // IF power saving mode is off
-  // then MAX TEMP is 32 degrees
+  maximumTemperature() {
+    return this.isPowerSavingModeOn()
+      ? this.MAXIMUM_TEMPERATURE_WHEN_POWER_SAVING_MODE_IS_ON
+      : this.MAXIMUM_TEMPERATURE;
+  }
+
+  isPowerSavingModeOn() {
+    return this.powerSavingMode === true;
+  }
 
   turnOffPowerSaving() {
     this.powerSavingMode = false;
@@ -40,8 +35,4 @@ class Thermostat {
   turnOnPowerSaving() {
     this.powerSavingMode = true;
   }
-
-  // owerSavingModeOn() {
-  //   this.turnOffPowerSaving() ? false : true
-  // }
 }
