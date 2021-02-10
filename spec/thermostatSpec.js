@@ -34,4 +34,11 @@ describe("Thermostat", () => {
     }
     expect(thermostat.currentTemperature()).toEqual(32);
   });
+  it("power saving mode is on by default", () => {
+    expect(thermostat.isPowerSavingModeOn()).toEqual(true);
+  });
+  it("power saving mode can be turned off", () => {
+    thermostat.turnOffPowerSaving();
+    expect(thermostat.isPowerSavingModeOn()).toEqual(false);
+  });
 });
