@@ -23,6 +23,10 @@ class Thermostat {
     this.temperature = this.DEFAULT_TEMPERATURE;
   }
 
+  currentEnergyUsage() {
+    return this.temperature > 25 ? "high-usage" : this.temperature < 18 ? "low-usage" : "medium-usage"
+  }
+
   maximumTemperature() {
     return this.isPowerSavingModeOn()
       ? this.MAXIMUM_TEMPERATURE_WHEN_POWER_SAVING_MODE_IS_ON
