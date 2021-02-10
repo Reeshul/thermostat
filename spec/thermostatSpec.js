@@ -47,5 +47,23 @@ describe("Thermostat", () => {
     }
     thermostat.reset();
     expect(thermostat.currentTemperature()).toEqual(20);
-  })
+  });
+  it("can detect high energy usage when temperature is more than 25 degrees", () => {
+    for (let i = 0; i < 6; i++) {
+      thermostat.up();
+    }
+    expect(thermostat.currentEnergyUsage()).toEqual("high-usage");
+  });
+  it("can detect medium energy usage when temperature is between than 18 and 25 degrees", () => {
+    for (let i = 0; i < 5; i++) {
+      thermostat.up();
+    }
+    expect(thermostat.currentEnergyUsage()).toEqual("medium-usage");
+  });
+  it("can detect low energy usage when temperature is less than 18 degrees", () => {
+    for (let i = 0; i < 3; i++) {
+      thermostat.down();
+    }
+    expect(thermostat.currentEnergyUsage()).toEqual("low-usage");
+  });
 });
