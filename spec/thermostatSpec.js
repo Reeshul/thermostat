@@ -14,4 +14,10 @@ describe("Thermostat", () => {
     thermostat.down();
     expect(thermostat.currentTemperature()).toEqual(19);
   });
+  it("temperature does not drop below 10 degrees", () => {
+    for (let i = 0; i < 11; i++) {
+      thermostat.down();
+    }
+    expect(thermostat.currentTemperature()).toEqual(10);
+  });
 });

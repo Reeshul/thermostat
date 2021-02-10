@@ -1,9 +1,8 @@
 class Thermostat {
-
   constructor() {
     this.temperature = 20;
   }
- 
+
   currentTemperature() {
     return this.temperature;
   }
@@ -13,6 +12,8 @@ class Thermostat {
   }
 
   down() {
-    this.temperature--;
+    if (this.temperature > 10) {
+      this.temperature--;
+    }
   }
 }
