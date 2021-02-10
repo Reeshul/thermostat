@@ -2,12 +2,14 @@
 
 class Thermostat {
   constructor() {
-    this.temperature = 20;
-    this.powerSavingMode = true;
     this.DEFAULT_TEMPERATURE = 20;
+    this.temperature = this.DEFAULT_TEMPERATURE;
+    this.powerSavingMode = true;
     this.MINIMUM_TEMPERATURE = 10;
-    this.MAXIMUM_TEMPERATURE = 32;
+    this.MAXIMUM_TEMPERATURE_WHEN_POWER_SAVING_MODE_IS_OFF = 32;
     this.MAXIMUM_TEMPERATURE_WHEN_POWER_SAVING_MODE_IS_ON = 25;
+    this.HIGH_ENERGY_USAGE_THRESHOLD_TEMPERATURE = 25;
+    this.MEDIUM_ENERGY_USAGE_THRESHOLD_TEMPERATURE = 18;
   }
 
   currentTemperature() {
@@ -29,9 +31,11 @@ class Thermostat {
   }
 
   currentEnergyUsage() {
-    return this.currentTemperature() > 25
+    return this.currentTemperature() >
+      this.HIGH_ENERGY_USAGE_THRESHOLD_TEMPERATURE
       ? "high-usage"
-      : this.currentTemperature() < 18
+      : this.currentTemperature() <
+        this.MEDIUM_ENERGY_USAGE_THRESHOLD_TEMPERATURE
       ? "low-usage"
       : "medium-usage";
   }
@@ -39,7 +43,7 @@ class Thermostat {
   maximumTemperature() {
     return this.isPowerSavingModeOn()
       ? this.MAXIMUM_TEMPERATURE_WHEN_POWER_SAVING_MODE_IS_ON
-      : this.MAXIMUM_TEMPERATURE;
+      : this.MAXIMUM_TEMPERATURE_WHEN_POWER_SAVING_MODE_IS_OFF;
   }
 
   minimumTemperature() {
