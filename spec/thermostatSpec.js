@@ -41,4 +41,11 @@ describe("Thermostat", () => {
     thermostat.turnOffPowerSaving();
     expect(thermostat.isPowerSavingModeOn()).toEqual(false);
   });
+  it("temperature can be reset to 20 degrees using a reset function", () => {
+    for (let i = 0; i < 4; i++) {
+      thermostat.up();
+    }
+    thermostat.reset();
+    expect(thermostat.currentTemperature()).toEqual(20);
+  })
 });
