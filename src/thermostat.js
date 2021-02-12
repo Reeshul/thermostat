@@ -59,6 +59,9 @@ class Thermostat {
   }
 
   turnOnPowerSaving() {
+    if (this.currentTemperature() > this.MAXIMUM_TEMPERATURE_WHEN_POWER_SAVING_MODE_IS_ON) {
+      this.temperature = this.MAXIMUM_TEMPERATURE_WHEN_POWER_SAVING_MODE_IS_ON
+    } 
     this.powerSavingMode = true;
   }
 }
